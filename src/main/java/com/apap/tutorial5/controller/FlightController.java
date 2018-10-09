@@ -46,24 +46,24 @@ public class FlightController {
 		return "add";
 	}
 	
-	@RequestMapping("flight/delete/{flightNumber}")
-	public String deleteFlight(@PathVariable (value = "flightNumber") String flightNumber, Model model) {
+	@RequestMapping(value = "flight/delete",method=RequestMethod.POST)
+	public String deleteFlight(@RequestParam ("flightNumber") String flightNumber, Model model) {
 		FlightModel deleted = flightService.deleteFlight(flightNumber);
 		model.addAttribute("flight", deleted);
 		model.addAttribute("pilot", deleted.getPilot());
 		return "delete-flight";
 	}
 	
-	@RequestMapping("/flight/update/flight-number/{flightNumber}/new-origin/{origin}/new-destination/{destination}/new-time/{time}")
-	public String updateFlight(@PathVariable (value = "flightNumber") String flightNumber, @PathVariable String origin, @PathVariable String destination, @PathVariable Date time, Model model) {
+	@RequestMapping(value = "/flight/update/", method=RequestMethod.POST)
+	public String updateFlight(@RequestParam ("flightNumber") String flightNumber, @RequestParam ("origin") String origin, @RequestParam ("destination") String destination, @RequestParam ("time") Date time, Model model) {
 		FlightModel updated = flightService.updateFlight(flightNumber, origin, destination, time);
 		model.addAttribute("flight", updated);
 		model.addAttribute("pilot", updated.getPilot());
 		return "update-flight";
 	}
 	
-	@RequestMapping(value = {"flight/view-flight/{flightNumber}"})
-	public String viewFlight(@PathVariable (value = "flightNumber") String flightNumber, Model model){
+	@RequestMapping(value = "flight/view-flight", method=RequestMethod.GET)
+	public String viewFlight(@RequestParam ("flightNumber") String flightNumber, Model model){
 		FlightModel flight = flightService.getFlightDetailByFlightNumber(flightNumber);
 		model.addAttribute("flight", flight);
 		model.addAttribute("pilot", flight.getPilot());

@@ -1,23 +1,49 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>Add Pilot</title>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<title>Tambah Pilot</title>
 	</head>
 	<body>
-		<h2>Hello!</h2>
+		<nav class="navbar fixed-top navbar-dark bg-dark">
+		  <a class="navbar-brand" href="#">
+		    <img src="https://cdn0.iconfinder.com/data/icons/transport-14/512/Airplane_Blue.png" width="30" height="30" class="d-inline-block align-top" alt="">
+		    Sistem Informasi APAP Airline
+		  </a>
+		</nav>
 		
-		<h3>Tambah Pilot</h3>
-		<form th:action="@{/pilot/add}" th:object="${pilot}" method="POST">
-			License Number: <br>
-			<input type="text" name="licenseNumber" />
+		<div class="container">
+			<br><br><br>
+			
+			<h2>Tambahkan Pilot</h2>
 			<br>
-			Name: <br>
-			<input type="text" name="name" />
-			<br>
-			Fly Hour: <br>
-			<input type="number" name="flyHour" />
-			<br><br>
-			<button type="submit">Submit</button>
-		</form>
+			
+			
+			<div class="row">
+				<form th:action="@{/pilot/add}" th:object="${pilot}" method="POST">
+					<div class="form-group">
+						<label for="license_number">License Number</label>
+						<input class="form-control" id="license_number" placeholder="Nomor lisensi pilot" type="text" name="licenseNumber" />
+					</div>
+					<div class="form-group">
+						<label for="name">Nama</label>
+						<input class="form-control" id="name" placeholder="nama" type="text" name="name" />
+					</div>
+					<div class="form-group">
+						<label for="fly_hour">Fly Hour</label>
+						<input class="form-control" id="fly_hour" placeholder="Jam terbang" type="number" name="flyHour" />
+					</div>
+					<div class="form-group">
+						<button class="btn btn-success" type="submit">Submit</button>
+					</div>	
+				</form>
+			</div>
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	</body>
 </html>

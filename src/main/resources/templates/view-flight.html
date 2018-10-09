@@ -1,17 +1,82 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<title>View Flight</title>
 	</head>
 	<body>
-		<h2>Informasi Flight</h2>
-		<h3 th:text="${flight.flightNumber}"></h3>
-		<h3 th:text="${flight.origin}"></h3>
-		<h3 th:text="${flight.destination}"></h3>
-		<h3 th:text="${flight.time}"></h3>
+		<nav class="navbar fixed-top navbar-dark bg-dark">
+		  <a class="navbar-brand" href="#">
+		    <img src="https://cdn0.iconfinder.com/data/icons/transport-14/512/Airplane_Blue.png" width="30" height="30" class="d-inline-block align-top" alt="">
+		    Sistem Informasi APAP Airline
+		  </a>
+		</nav>
+		<br><br><br>
+		<div class="container">
+			<h2>Informasi Flight</h2>
+			<div class="row">
+				
+			<div class="col-sm-4">
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top" src="https://static.thenounproject.com/png/113297-200.png" alt="Card image cap">
+					<div class="card-body">
+						<h3 th:text="${flight.flightNumber}"></h3>
+						<h3 th:text="${flight.origin}"></h3>
+						<h3 th:text="${flight.destination}"></h3>
+						<h3 th:text="${flight.time}"></h3>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+					<h2>Update Flight</h2>
+					<form th:action="@{/flight/update}" th:object="${flight}" method="POST">
+						<div class="form-group">
+							<label for="origins">Asal</label>
+							<input class="form-control" id="origins" placeholder="Asal terbang" type="text" name="origin" />
+						</div>
+						<input type="hidden" name="flightNumber" th:field="${flight.flightNumber}" />
+						<div class="form-group">
+							<label for="destinations">Tujuan</label>
+							<input class="form-control" id="destinations" placeholder="Tujuan Terbang" type="text" name="destination" />
+						</div>
+						<div class="form-group">
+							<label for="times">Waktu</label>
+							<input class="form-control" id="times" placeholder="Waktu Terbang" type="Date" name="time" />
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary btn-lg" type="submit">Update Flight</button>
+						</div>
+					</form>
+				</div>
+				<div class="col-sm-4">
+					<h2>Delete Flight</h2>
+					<form th:action="@{/flight/delete}" th:object="${flight}" method="POST">
+						<input type="hidden" name="flightNumber" th:field="${flight.flightNumber}" />
+						<div class="form-group">
+							<button class="btn btn-danger btn-lg" type="submit">Delete Flight</button>
+						</div>
+					</form>
+				</div>
+			</div><br>
+			<h3>Informasi Pilot</h3>
+		<div class="col-sm-4">
+					<div class="card" style="width: 18rem;">
+					  <img class="card-img-top" src="https://static.thenounproject.com/png/113297-200.png" alt="Card image cap">
+					  <div class="card-body">
+					    <h3 th:text="'Pilot License Number: ' + ${pilot.licenseNumber}"></h3>
+						<h3 th:text="'Name: ' + ${pilot.name}"></h3>
+					  </div>
+					</div>
+				</div>
+			
+		</div>
 		<br>
-		<h3>Informasi Pilot</h3>
-		<h3 th:text="'Pilot License Number: ' + ${pilot.licenseNumber}"></h3>
-		<h3 th:text="'Name: ' + ${pilot.name}"></h3>
+		
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	</body>
 </html>

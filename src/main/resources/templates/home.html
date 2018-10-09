@@ -1,19 +1,75 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>SI APAP Airline</title>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<title>Sistem Informasi APAP Airline</title>
 	</head>
 	<body>
-		<h1>SI APAP Airline!</h1>
+		<nav class="navbar fixed-top navbar-dark bg-dark">
+		  <a class="navbar-brand" href="#">
+		    <img src="https://cdn0.iconfinder.com/data/icons/transport-14/512/Airplane_Blue.png" width="30" height="30" class="d-inline-block align-top" alt="">
+		    Sistem Informasi APAP Airline
+		  </a>
+		</nav>
+		<div class="container">
+			<br><br><br>
+			
+			<h2>Welcome to APAP Airline!</h2>
+			<br><br>
+			
+			<div class="row">
+			    <div class="col-sm-4">
+			      <h3>Tambahkan Pilot</h3>
+			    </div>
+			    <div class="col-sm-4">
+			    	<button type="button" class="btn btn-outline-primary btn-lg"><a th:href="@{/pilot/add}">Tambah Pilot</a></button>
+			    </div>
+			</div>
+			<br>
+			<br>
+			<div class="row">
+				<div class=col-sm-4>
+					<h3>Cari Pilot berdasarkan Nomor Lisensi</h3>
+				</div>
+				<div class=col-sm-8>
+					<form th:action="@{/pilot/view-pilot}" method="GET">
+						<div class="form-row">
+							<div class="col">
+								<input class="form-control" id="license_number" placeholder="Nomor lisensi pilot" type="text" name="licenseNumber"/>
+							</div>
+							<div class="col">
+								<button type="submit" class="btn btn-primary">Cari</button>
+							</div>
+							
+						</div>
+					</form>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class=col-sm-4>
+					<h3>Cari Penerbangan berdasarkan Nomor Terbang</h3>
+				</div>
+				<div class=col-sm-8>
+					<form th:action="@{/flight/view-flight}" method="GET">
+						<div class="form-row">
+							<div class="col">
+								<input class="form-control" id="flight_number" placeholder="Nomor terbang" type="text" name="flightNumber"/>
+							</div>
+							<div class="col">
+								<button type="submit" class="btn btn-primary">Cari</button>
+							</div>
+							
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 		
-		<h2>Tambah Pilot</h2>
-		<button type="button"><a th:href="@{/pilot/add}">Tambah</a></button>
-		
-		<h2>Cari Pilot berdasarkan Nomor Lisensi</h2>
-		<form th:action="@{/pilot/view-pilot}" method="GET">
-			License Number: <br>
-			<input type="text" name="licenseNumber"/>
-			<button type="submit">Cari</button>
-		</form>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	</body>
 </html>
