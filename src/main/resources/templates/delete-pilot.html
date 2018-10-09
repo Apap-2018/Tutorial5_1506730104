@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Delete Pilot</title>
+	</head>
+	<body>
+		<h2>Pilot dihapus</h2><br>
+		<h3 th:text="'Pilot License Number: ' + ${pilot.licenseNumber}"></h3>
+		<h3 th:text="'Name: ' + ${pilot.name}"></h3>
+		<h3 th:text="'Fly Hour: ' + ${pilot.flyHour}"></h3>
+		<br><br><br>
+		
+		<button type="button"><a th:href="@{/}">Home</a></button>
+	</body>
+</html>

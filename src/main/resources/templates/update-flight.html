@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Update Flight</title>
+	</head>
+	<body>
+		<h2>Flight telah diupdate</h2><br>
+		<h3 th:text="'Flight Number: ' + ${flight.flightNumber}"></h3>
+		<h3 th:text="'origin: ' + ${flight.origin}"></h3>
+		<h3 th:text="'destination: ' + ${flight.destination}"></h3>
+		<h3 th:text="'time: ' + ${flight.time}"></h3>
+		<h3>Pilot Flight</h3>
+		<h3 th:text="'Pilot License Number: ' + ${pilot.licenseNumber}"></h3>
+		<h3 th:text="'Name: ' + ${pilot.name}"></h3>
+	</body>
+</html>

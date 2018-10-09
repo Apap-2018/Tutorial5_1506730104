@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>View Pilot</title>
+	</head>
+	<body>
+		<h2>Informasi Pilot</h2><br>
+		<h3 th:text="'Pilot License Number: ' + ${pilot.licenseNumber}"></h3>
+		<h3 th:text="'Name: ' + ${pilot.name}"></h3>
+		<h3 th:text="'Fly Hour: ' + ${pilot.flyHour}"></h3>
+		<td><a th:href="@{/flight/add/{licenseNumber}(licenseNumber=${pilot.licenseNumber})}">Add Flight</a></td>
+		<br><br><br>
+		
+		<h2>Daftar Flight</h2>
+		<div th:each="flight : ${pilotFlight}">
+			<h3 th:text="${flight.id}"></h3>
+			<h3 th:text="${flight.flightNumber}"></h3>
+			<h3 th:text="${flight.origin}"></h3>
+			<h3 th:text="${flight.destination}"></h3>
+			<h3 th:text="${flight.time}"></h3>
+		</div>
+		<br><br><br>
+		
+		<h2>Delete Pilot</h2>
+		<form th:action="@{/pilot/delete}" th:object="${pilot}" method="POST">
+			<input type="hidden" name="licenseNumber" th:field="${pilot.licenseNumber}" />
+			<button type="submit">Delete Pilot</button>
+		</form>
+		<br><br><br>
+		
+		<h2>Update Pilot</h2>
+		<form th:action="@{/pilot/update}" th:object="${pilot}" method="POST">
+			<input type="hidden" name="licenseNumber" th:field="${pilot.licenseNumber}" />
+			Name: <br>
+			<input type="text" name="name" />
+			<br>
+			Fly Hour: <br>
+			<input type="number" name="flyHour" />
+			<br><br>
+			<button type="submit">Update Pilot</button>
+		</form>
+		<br><br><br>
+		
+		<button type="button"><a th:href="@{/}">Home</a></button>
+	</body>
+</html>
