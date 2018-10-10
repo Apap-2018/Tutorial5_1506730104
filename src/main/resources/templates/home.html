@@ -3,48 +3,45 @@
 	<head>
 		<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 		<title>Sistem Informasi APAP Airline</title>
 	</head>
 	<body>
-		<nav class="navbar fixed-top navbar-dark bg-dark">
-		  <a class="navbar-brand" href="#">
-		    <img src="https://cdn0.iconfinder.com/data/icons/transport-14/512/Airplane_Blue.png" width="30" height="30" class="d-inline-block align-top" alt="">
-		    Sistem Informasi APAP Airline
-		  </a>
-		</nav>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
 		<div class="container">
-			<br><br><br>
+			<br>
 			
 			<h2>Welcome to APAP Airline!</h2>
-			<br><br>
+			<br>
 			
 			<div class="row">
-			    <div class="col-sm-4">
-			      <h3>Tambahkan Pilot</h3>
-			    </div>
-			    <div class="col-sm-4">
-			    	<button type="button" class="btn btn-outline-primary btn-lg"><a th:href="@{/pilot/add}">Tambah Pilot</a></button>
+			    <div class="col-md-6">
+			    	<div class="card-header">
+			    		<h3>Tambahkan Pilot</h3>
+			    	</div>
+			    	<div class="card-body">
+			    		<p class="card-text">Fitur untuk menambah pilot</p>
+			    		<a class="btn btn-primary btn-lg" th:href="@{/pilot/add}">Tambah Pilot</a>
+			    	</div>
 			    </div>
 			</div>
 			<br>
-			<br>
 			<div class="row">
-				<div class=col-sm-4>
-					<h3>Cari Pilot berdasarkan Nomor Lisensi</h3>
-				</div>
-				<div class=col-sm-8>
-					<form th:action="@{/pilot/view-pilot}" method="GET">
-						<div class="form-row">
-							<div class="col">
+				<div class=col-md-6>
+					<div class="card">
+						<div class="card-header">
+				    		<h3>Cari Pilot berdasarkan Nomor Lisensi</h3>
+				    	</div>
+				    	<form th:action="@{/pilot/view}" method="GET">
+							<div class="card-body">
+								<label for="licenseNumber">Nomor Lisensi:</label>
 								<input class="form-control" id="license_number" placeholder="Nomor lisensi pilot" type="text" name="licenseNumber"/>
-							</div>
-							<div class="col">
+								<p></p>
 								<button type="submit" class="btn btn-primary">Cari</button>
 							</div>
-							
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
 			</div>
 			<br>

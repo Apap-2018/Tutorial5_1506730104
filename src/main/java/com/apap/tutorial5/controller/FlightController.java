@@ -6,6 +6,7 @@ import com.apap.tutorial5.model.FlightModel;
 import com.apap.tutorial5.service.FlightService;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,9 +49,12 @@ public class FlightController {
 	
 	@RequestMapping(value = "flight/delete",method=RequestMethod.POST)
 	public String deleteFlight(@RequestParam ("flightNumber") String flightNumber, Model model) {
-		FlightModel deleted = flightService.deleteFlight(flightNumber);
-		model.addAttribute("flight", deleted);
-		model.addAttribute("pilot", deleted.getPilot());
+		List<FlightModel> pilotFlights;
+		for(a ){
+			
+		}
+		FlightModel deleted = flightService.deleteFlight(flightNumber);		
+		model.addAttribute("flight", pilotFlights);
 		return "delete-flight";
 	}
 	

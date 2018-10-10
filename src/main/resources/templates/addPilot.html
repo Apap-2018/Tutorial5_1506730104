@@ -3,16 +3,12 @@
 	<head>
 		<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 		<title>Tambah Pilot</title>
 	</head>
 	<body>
-		<nav class="navbar fixed-top navbar-dark bg-dark">
-		  <a class="navbar-brand" href="#">
-		    <img src="https://cdn0.iconfinder.com/data/icons/transport-14/512/Airplane_Blue.png" width="30" height="30" class="d-inline-block align-top" alt="">
-		    Sistem Informasi APAP Airline
-		  </a>
-		</nav>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
 		
 		<div class="container">
 			<br><br><br>
