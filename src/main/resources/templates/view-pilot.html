@@ -67,6 +67,7 @@
 			<table class="table table-hover">
 			  <thead>
 			    <tr>
+			    	<th scope="col">Nomor</th>
 			      <th scope="col">Nomor Penerbangan</th>
 			      <th scope="col">Asal</th>
 			      <th scope="col">Tujuan</th>
@@ -74,8 +75,9 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<div th:each="flight : ${pilotFlight}">
+			  	<div th:each="flight,iterationStatus : ${pilotFlight}" th:style="${iterationStatus.even} ? 'display:none;'">
 			  		<tr>
+			  		<td th:text="${iterationStatus.count}"></td>
 					<td th:text="${flight.flightNumber}"></td>
 					<td th:text="${flight.origin}"></td>
 					<td th:text="${flight.destination}"></td>

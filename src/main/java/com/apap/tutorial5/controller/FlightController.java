@@ -54,7 +54,7 @@ public class FlightController {
 		return "delete-flight";
 	}
 	
-	@RequestMapping(value = "/flight/update/", method=RequestMethod.POST)
+	@RequestMapping(value = "/flight/update", method=RequestMethod.POST)
 	public String updateFlight(@RequestParam ("flightNumber") String flightNumber, @RequestParam ("origin") String origin, @RequestParam ("destination") String destination, @RequestParam ("time") Date time, Model model) {
 		FlightModel updated = flightService.updateFlight(flightNumber, origin, destination, time);
 		model.addAttribute("flight", updated);
