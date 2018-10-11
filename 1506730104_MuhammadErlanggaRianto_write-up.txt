@@ -1,0 +1,13 @@
+1. Pada tutorial, Anda sudah mencoba membuat fragment navigation bar. Tetapi, navigation
+bar pada tutorial tersebut tidak dinamis. Data HTML pada header akan sama di setiap view
+yang memakai fragment tersebut.
+Pada latihan kali ini, Anda diminta untuk membuat sebuah fragment navigation bar yang
+dinamis. Dimana, aspek dinamis tersebut terdapat pada title navbar yang sebelumnya
+hanya bertuliskan “APAP” akan berubah sesuai dengan nama page yang sedang
+diakses. Silahkan implementasi dengan kebutuhan tersebut, dan jika sudah berhasil,
+pastikan Anda mengimplementasikannya pada setiap view yang ada di project ini.
+
+2. Pada bagian form handler, anda telah mempelajari cara meng-handle input multiple
+checkbox untuk dapat melakukan delete banyak flight sekaligus. Pada latihan ini, Anda
+diminta untuk dapat melakukan insert banyak flight sekaligus.
+*hint: Anda dapat mencontoh cara implementasi dynamic field pada link ini

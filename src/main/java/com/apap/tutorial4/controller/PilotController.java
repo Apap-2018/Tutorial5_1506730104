@@ -24,18 +24,24 @@ public class PilotController {
 	
 	@RequestMapping("/")
 	private String home() {
+		String pageTitle = "Home";
+		model.addAttribute("pageTitle", pageTitle);
 		return "home";
 	}
 	
 	@RequestMapping(value="/pilot/add", method=RequestMethod.GET)
 	private String add(Model model) {
+		String pageTitle = "Add Pilot";
+		model.addAttribute("pageTitle", pageTitle);
 		model.addAttribute("pilot", new PilotModel());
 		return "addPilot";
 	}
 	
 	@RequestMapping(value="/pilot/add", method=RequestMethod.POST)
 	private String addPilotSubmit(@ModelAttribute PilotModel pilot) {
-		pilotService.addPilot(pilot);;
+		pilotService.addPilot(pilot);
+		String pageTitle = "Add";
+		model.addAttribute("pageTitle", pageTitle);
 		return "add";
 	}
 	
@@ -43,6 +49,8 @@ public class PilotController {
 	private String viewPilot(@RequestParam("licenseNumber") String licenseNumber, Model model) {
 		PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
 		List<FlightModel> listOfFlight = pilot.getPilotFlight();
+		String pageTitle = "View Pilot";
+		model.addAttribute("pageTitle", pageTitle);
 		model.addAttribute("listOfFlight", listOfFlight);
 		model.addAttribute("pilot", pilot);
 		return "view-pilot";
@@ -51,6 +59,8 @@ public class PilotController {
 	@RequestMapping("/pilot/delete")
 	public String delete(@RequestParam("licenseNumber") String licenseNumber, Model model) {
 		PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
+		String pageTitle = "Delete Pilot";
+		model.addAttribute("pageTitle", pageTitle);
 		pilotService.deletePilot(pilot);
 		return "delete-pilot";
 	}
@@ -58,7 +68,8 @@ public class PilotController {
 	@RequestMapping(value="/pilot/update", method=RequestMethod.GET)
 	public String update(@RequestParam("licenseNumber") String licenseNumber, Model model) {
 		PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
-		
+		String pageTitle = "Update Pilot";
+		model.addAttribute("pageTitle", pageTitle);
 		if(pilot != null) {
 			model.addAttribute("pilot", pilot);
 			return "updatePilot";
@@ -70,6 +81,8 @@ public class PilotController {
 	
 	@RequestMapping(value="/pilot/update", method=RequestMethod.POST)
 	private String updatePilotSubmit(@ModelAttribute PilotModel pilot) {
+		String pageTitle = "Update";
+		model.addAttribute("pageTitle", pageTitle);
 		pilotService.addPilot(pilot);
 		return "update";
 	}
