@@ -1,32 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta charset="utf-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Delete</title>
 		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
 		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
-		<title>Delete Pilot</title>
 	</head>
 	<body>
 		<nav th:replace="fragments/fragment :: navbar"></nav>
-		<br><br><br>
-		<div class="container">
-			<h2>Pilot dihapus</h2><br>
-			<div class="card" style="width: 18rem;">
-				<img class="card-img-top" src="https://static.thenounproject.com/png/113297-200.png" alt="Card image cap">
-				<div class="card-body">
-					<h3 th:text="'Pilot License Number: ' + ${pilot.licenseNumber}"></h3>
-					<h3 th:text="'Name: ' + ${pilot.name}"></h3>
-					<h3 th:text="'Fly Hour: ' + ${pilot.flyHour}"></h3>
-				</div>
-			</div>
-			<br>
-			<button class="btn btn-outline-primary btn-lg" type="button"><a th:href="@{/}">Home</a></button>
-		</div>
-		<br>
-		
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<h2>Data Berhasil Dihapus</h2>
 	</body>
 </html>

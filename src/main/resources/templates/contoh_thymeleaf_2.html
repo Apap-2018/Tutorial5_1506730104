@@ -1,0 +1,15 @@
+<style>
+	.red{
+	color: red;
+	}
+	.red a{
+	text-decoration: none;
+	color: red;
+	}
+</style>
+<ol>
+	<li  th:each="ruangan,iterationStatus: ${listRuangan}" th:class="${iterationStatus.odd}? 'red'">
+		<a th:href="@{/ruangan/view/{ruanganId}(ruanganId=${ruangan.id})}" th:text="${ruangan.kodeRuang}"></a>
+	</li> 
+</ol>    
+

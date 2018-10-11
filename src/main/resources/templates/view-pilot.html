@@ -1,98 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta charset="utf-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>View Detail</title>
 		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
 		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
-		<title>View Pilot</title>
 	</head>
 	<body>
 		<nav th:replace="fragments/fragment :: navbar"></nav>
-		<div class="container">
-			<br><br><br>
-			
-			<h2>Informasi Pilot</h2><br>
-			
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="card" style="width: 18rem;">
-					  <img class="card-img-top" src="https://static.thenounproject.com/png/113297-200.png" alt="Card image cap">
-					  <div class="card-body">
-					    <h3 th:text="'Pilot License Number: ' + ${pilot.licenseNumber}"></h3>
-						<h3 th:text="'Name: ' + ${pilot.name}"></h3>
-						<h3 th:text="'Fly Hour: ' + ${pilot.flyHour}"></h3>
-						<h3 th:text="${pilot.flyHour} >= 100 ? 'Status: Pilot Senior' : 'Status: Pilot Junior'"></h3>
-					  </div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<h2>Update Pilot</h2>
-					<form th:action="@{/pilot/update}" th:object="${pilot}" method="POST">
-						<div class="form-group">
-							<label for="names">Nama</label>
-							<input class="form-control" id="names" placeholder="Nama pilot" type="text" name="name" />
-						</div>
-						<input type="hidden" name="licenseNumber" th:field="${pilot.licenseNumber}" />
-						<div class="form-group">
-							<label for="fly_hour">Fly Hour</label>
-							<input class="form-control" id="fly_hour" placeholder="Jam Terbang" type="text" name="flyHour" />
-						</div>
-						<div class="form-group">
-							<button class="btn btn-primary btn-lg" type="submit">Update Pilot</button>
-						</div>
-					</form>
-				</div>
-				<div class="col-sm-4">
-					<h2>Delete Pilot</h2>
-					<form th:action="@{/pilot/delete}" th:object="${pilot}" method="POST">
-						<input type="hidden" name="licenseNumber" th:field="${pilot.licenseNumber}" />
-						<div class="form-group">
-							<button class="btn btn-danger btn-lg" type="submit">Delete Pilot</button>
-						</div>
-					</form>
-				</div>
-			</div>
-			<br><br>
-			
-			<h2>Daftar penerbangan</h2><br>
-			
-			<div class="row">
-				<button type="button" class="btn btn-outline-primary btn-lg"><a th:href="@{/flight/add/{licenseNumber}(licenseNumber=${pilot.licenseNumber})}">Tambahkan Penerbangan</a></button>
-			</div>
-				<br>
-			<table class="table table-hover">
-			  <thead>
-			    <tr>
-			    	<th scope="col">Nomor</th>
-			      <th scope="col">Nomor Penerbangan</th>
-			      <th scope="col">Asal</th>
-			      <th scope="col">Tujuan</th>
-			      <th scope="col">Waktu</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			  	<div th:each="flight,iterationStatus : ${pilotFlight}" th:style="${iterationStatus.even} ? 'display:none;'">
-			  		<tr>
-			  		<td th:text="${iterationStatus.count}"></td>
-					<td th:text="${flight.flightNumber}"></td>
-					<td th:text="${flight.origin}"></td>
-					<td th:text="${flight.destination}"></td>
-					<td th:text="${flight.time}"></td>
-					<td>
-						<input type="checkbox" th:field="*{penerbanganPilot}" th:value="${flight.id}"/>
-						<label th:for="${#ids.prev('penerbanganPilot')}">Hapus</label>
-					</td>
-					</tr>
-				</div>
-			  </tbody>
-			</table>
-			<br>
-			<button class="btn btn-outline-secondary btn-lg" type="button"><a th:href="@{/}">Home</a></button>
-		</div>
+		<h3 th:text="'Pilot License Number: ' + ${pilot.licenseNumber}"></h3>
+		<h3 th:text="'Name: ' + ${pilot.name}"></h3>
+		<h3 th:text="'Fly Hour: ' + ${pilot.flyHour}"></h3>
+		<h3 th:text="${pilot.flyHour} >= 100 ? 'Status: Pilot Senior' : 'Status: Pilot Junior'"></h3>
 		
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<form th:action="@{/pilot/update/} + ${pilot.id}">
+			<button type="submit">Update Pilot</button>
+		</form>
+		<form th:action="@{/pilot/delete/} + ${pilot.id}">
+			<button type="submit">Delete Pilot</button>
+		</form>
+
+		<form th:action="@{/flight/delete}" th:object="${pilot}" method="POST">
+			<table border="I">
+				<caption>Flights</caption>
+				<thead>
+					<tr>
+						<th style="text-align: center">No.</th>
+						<th style="text-align: center">Flight Number</th>
+						<th style="text-align: center">Origin</th>
+						<th style="text-align: center">Destination</th>
+						<th style="text-align: center">Time</th>
+						<th style="text-align: center">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="flight,iterationStatus : *{listOfFlight}">
+						<td th:text="${iterationStatus.count}"></td>
+						<td th:text="${flight.flightNumber}"></td>
+						<td th:text="${flight.origin}"></td>
+						<td th:text="${flight.destination}"></td>
+						<td th:text="${flight.time}"></td>
+						<td>
+							<input type="checkbox" th:field="*{listOfFlight}" th:value="${flight.id}"/>
+							<label th:for="${#ids.prev('listOfFlight')}">Hapus</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="submit">Delete Selected Flight</button>
+		</form>
+		<form th:action="@{/flight/add/} + ${pilot.licenseNumber}">
+			<button value="submit">Add Flight</button>
+		</form>
 	</body>
 </html>

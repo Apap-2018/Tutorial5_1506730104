@@ -1,48 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta charset="utf-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Add Flight</title>
 		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
 		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
-		<title>Tambah Penerbangan</title>
 	</head>
 	<body>
 		<nav th:replace="fragments/fragment :: navbar"></nav>
-		<br><br><br>
-		<div class="container">
-			<h3>Tambah Penerbangan</h3>
+		<h2>Hello</h2>
+		<h3>Tambah Flight</h3>
+		<form th:action="@{/flight/add}" th:object="${flight}" method="POST">
+			<input type="hidden" th:field="*{pilot}" />
+			Flight Number:<br>
+			<input type="text" name="flightNumber" />
 			<br>
-			<div class="row">
-				<form th:action="@{/flight/add}" th:object="${flight}" method="POST">
-					<input type="hidden" th:field="*{pilot}" />
-					<div class="form-group">
-						<label for="flight_number">Flight Number</label>
-					<input class="form-control" id="flight_number" placeholder="Nomor penerbangan" type="text" name="flightNumber" />
-					</div>
-					<div class="form-group">
-						<label for="origins">Asal</label>
-						<input class="form-control" id="origins" placeholder="Asal penerbangan" type="text" name="origin" />
-					</div>
-					<div class="form-group">
-						<label for="destinations">Tujuan</label>
-						<input class="form-control" id="destinations" placeholder="Tujuan penerbangan" type="text" name="destination" />
-					</div>
-					<div class="form-group">
-						<label for="times">Waktu</label>
-						<input class="form-control" id="times" placeholder="Waktu penerbangan" type="date" name="time" />
-					</div>
-					<div class="form-group">
-						<button class="btn btn-success" type="submit">Submit</button>
-					</div>
-					
-				</form>
-			</div>
-			
-		</div>
-		
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+			Origin: <br>
+			<input type="text" name="origin" />
+			Destination: <br>
+			<input type="text" name="destination" />
+			Time: <br>
+			<input type="date" name="time" />
+			<br><br>
+			<button type="submit">Submit</button>
+		</form>
 	</body>
 </html>

@@ -1,0 +1,44 @@
+<h1>Detail Ruangan</h1>
+	<hr></hr>
+	<table style="width:100%" border="1">
+			<tr>
+				<td>Id</td>
+				<td><p th:text="${ruangan.id}">ID Ruangan</p></td>
+			</tr>
+			<tr>
+				<td>Kode Ruang</td>
+				<td><p th:text="${ruangan.kodeRuang}">Kode Ruangan</p></td>
+			</tr>
+			<tr>
+				<td>Deskripsi Ruangan</td>
+				<td><p th:text="${ruangan.deskripsi}">Deskripsi Ruangan</p></td>
+			</tr>
+			<tr>
+				<td>Tipe Ruangan</td>
+				<td><p th:text="${ruangan.tipe}">Tipe Ruangan</p></td>
+			</tr>
+			<tr>
+				<td>Panjang(m)</td>
+				<td><p th:text="${ruangan.panjang}">Panjang Ruangan</p></td>
+			</tr>
+			<tr>
+				<td>Lebar(m)</td>
+				<td><p th:text="${ruangan.lebar}">Lebar Ruangan</p></td>
+			</tr>
+			<tr>
+				<td>Lokasi</td>
+				<td><p th:text="${ruangan.lokasi}">Lokasi Ruangan</p></td>
+			</tr>
+			<tr>
+				<td>Status</td>
+				<td th:switch="${ruangan.status}">
+					<p th:case="0">Not Available</p>
+					<p th:case="1">Available</p>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><a href="/"><button class="btn-primary">Kembali</button></a></td>
+			</tr>
+	</table>
+</div>
