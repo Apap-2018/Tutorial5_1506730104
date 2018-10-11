@@ -6,6 +6,7 @@ dinamis. Dimana, aspek dinamis tersebut terdapat pada title navbar yang sebelumn
 hanya bertuliskan “APAP” akan berubah sesuai dengan nama page yang sedang
 diakses. Silahkan implementasi dengan kebutuhan tersebut, dan jika sudah berhasil,
 pastikan Anda mengimplementasikannya pada setiap view yang ada di project ini.
+Menambahkan th:text $pageTitle di fragment, lalu menambahkan atribut String pageTitle di tiap mapping halaman sesuai dengan title halaman.
 
 2. Pada bagian form handler, anda telah mempelajari cara meng-handle input multiple
 checkbox untuk dapat melakukan delete banyak flight sekaligus. Pada latihan ini, Anda
